@@ -1,0 +1,105 @@
+[
+  {
+    "slug": "hollow-signal",
+    "title": "Hollow Signal",
+    "status": "Released",
+    "meta": "Godot 4 · 25 min · Windows / Web",
+    "tagline": "A radio operator alone on a coastal relay. Answer the calls, or don't.",
+    "story": "You are the last night operator at Relay Nine. Voices arrive on frequencies that were decommissioned twenty years ago, and each one asks you to log something that never happened.",
+    "detail": "Built in six weeks for a jam and finished afterwards. Hand-modelled interior in Blender, baked lighting, one dialogue tree with four endings.",
+    "stack": "Godot 4.3, Blender, Reaper for foley.",
+    "controls": [
+      { "key": "WASD", "act": "Move" },
+      { "key": "E", "act": "Interact / tune" },
+      { "key": "TAB", "act": "Log book" },
+      { "key": "ESC", "act": "Pause" }
+    ],
+    "cover": null,
+    "shots": [
+      { "src": null, "label": "screenshot 01 — relay booth" },
+      { "src": null, "label": "screenshot 02 — the dial" },
+      { "src": null, "label": "trailer — 40s cut" }
+    ],
+    "itchUrl": "https://itch.io",
+    "embedUrl": null,
+    "downloadUrl": null,
+    "featured": 2,
+    "featuredNote": "Out now on itch.io. Four endings, one radio."
+  },
+  {
+    "slug": "ferrous",
+    "title": "Ferrous",
+    "status": "Released",
+    "meta": "Godot 4 · 15 min · Web",
+    "tagline": "One-button magnet platformer. Everything metal wants you.",
+    "story": "A scrap drone falls into a decommissioned foundry and discovers it can only move by pulling the world toward itself.",
+    "detail": "Made in a weekend, then rebalanced twice from player replays. Nine levels, no text, no tutorial.",
+    "stack": "Godot 4.2, pixel art in Aseprite.",
+    "controls": [
+      { "key": "SPACE", "act": "Magnetise" },
+      { "key": "R", "act": "Restart level" }
+    ],
+    "cover": null,
+    "shots": [
+      { "src": null, "label": "screenshot 01 — foundry" },
+      { "src": null, "label": "screenshot 02 — the pull" },
+      { "src": null, "label": "trailer — 20s loop" }
+    ],
+    "itchUrl": "https://itch.io",
+    "embedUrl": null,
+    "downloadUrl": null,
+    "featured": null,
+    "featuredNote": null
+  },
+  {
+    "slug": "terrarium-debt",
+    "title": "Terrarium Debt",
+    "status": "In development",
+    "meta": "Godot 4 · WIP · Devlog live",
+    "tagline": "A tiny colony sim where the plants keep the ledger.",
+    "story": "Your greenhouse lends you oxygen at interest. Miss a payment and the terrarium reclaims a room.",
+    "detail": "Currently prototyping the growth simulation. Devlog posts go up every other Friday with build links.",
+    "stack": "Godot 4.4, Blender for the modular greenhouse kit.",
+    "controls": [
+      { "key": "LMB", "act": "Place / select" },
+      { "key": "Q / E", "act": "Rotate" },
+      { "key": "SPACE", "act": "Advance day" }
+    ],
+    "cover": null,
+    "shots": [
+      { "src": null, "label": "wip 01 — greenhouse" },
+      { "src": null, "label": "wip 02 — ledger ui" },
+      { "src": null, "label": "wip 03 — growth pass" }
+    ],
+    "itchUrl": "https://itch.io",
+    "embedUrl": null,
+    "downloadUrl": null,
+    "featured": null,
+    "featuredNote": null
+  },
+  {
+    "slug": "nightcrawl",
+    "title": "Nightcrawl",
+    "status": "Prototype",
+    "meta": "Godot 4 · 10 min · Web",
+    "tagline": "Drive a service tunnel at 3am. Something else is also on shift.",
+    "story": "A maintenance loop through eleven kilometres of tunnel. The route never changes. The lights do.",
+    "detail": "A mood piece testing baked-lighting workflows from Blender into Godot. Playable, unfinished on purpose.",
+    "stack": "Godot 4.3, Blender baked lightmaps.",
+    "controls": [
+      { "key": "W / S", "act": "Throttle" },
+      { "key": "A / D", "act": "Steer" },
+      { "key": "L", "act": "Headlights" }
+    ],
+    "cover": null,
+    "shots": [
+      { "src": null, "label": "screenshot 01 — tunnel mouth" },
+      { "src": null, "label": "screenshot 02 — the halt" }
+    ],
+    "itchUrl": "https://itch.io",
+    "embedUrl": null,
+    "downloadUrl": null,
+    "featured": null,
+    "featuredNote": null
+  }
+]

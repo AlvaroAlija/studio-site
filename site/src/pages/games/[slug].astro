@@ -1,0 +1,339 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { games } from "../../lib/content";
+
+export function getStaticPaths() {
+  return games.map((game) => ({ params: { slug: game.slug }, props: { game } }));
+}
+
+const { game } = Astro.props;
+const hasEmbed = Boolean(game.embedUrl);
+---
+
+<Layout title={`${game.title} — Álvaro`} description={game.tagline}>
+  <div class="wrap">
+    <article class="panel">
+      <div class="media">
+        {hasEmbed ? (
+          <iframe
+            src={game.embedUrl}
+            title={`${game.title} — playable build`}
+            allow="autoplay; fullscreen; gamepad"
+            loading="lazy"
+          ></iframe>
+        ) : (
+          <div class="carousel" data-count={game.shots.length}>
+            {game.shots.map((shot, i) => (
+              <div class:list={["shot", { current: i === 0 }]} data-index={i}>
+                {shot.src ? (
+                  <img src={shot.src} alt={shot.label} loading={i === 0 ? "eager" : "lazy"} />
+                ) : (
+                  <div class="ph warm shot-ph">
+                    <div>
+                      <p class="ph-kicker">HTML5 BUILD / IFRAME CONTAINER</p>
+                      <p class="ph-label">{shot.label}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+            {game.shots.length > 1 && (
+              <>
+                <button class="arrow prev" aria-label="Previous screenshot">‹</button>
+                <button class="arrow next" aria-label="Next screenshot">›</button>
+              </>
+            )}
+          </div>
+        )}
+        <a class="close" href="/#games">CLOSE ✕</a>
+      </div>
+
+      <div class="body">
+        <div>
+          <h2>{game.title}</h2>
+          <p class="meta">{game.meta}</p>
+          <p class="prose">{game.story}</p>
+          <p class="prose last">{game.detail}</p>
+          <div class="actions">
+            <a class="itch" href={game.itchUrl} target="_blank" rel="noreferrer">Open on itch.io ↗</a>
+            {game.downloadUrl ? (
+              <a class="dl" href={game.downloadUrl}>Download .zip</a>
+            ) : (
+              <a class="dl" href={game.itchUrl} target="_blank" rel="noreferrer">Download .zip</a>
+            )}
+          </div>
+        </div>
+        <aside>
+          <h3>Controls</h3>
+          <div class="controls">
+            {game.controls.map((c) => (
+              <div class="control">
+                <span class="key">{c.key}</span>
+                <span>{c.act}</span>
+              </div>
+            ))}
+          </div>
+          <h3 class="built">Built with</h3>
+          <p class="stack">{game.stack}</p>
+        </aside>
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<script>
+  // Screenshot carousel: arrows + keyboard, index wraps modulo the shot count.
+  const carousel = document.querySelector<HTMLElement>(".carousel");
+  if (carousel) {
+    const shots = [...carousel.querySelectorAll<HTMLElement>(".shot")];
+    let index = 0;
+
+    function show(next: number): void {
+      index = ((next % shots.length) + shots.length) % shots.length;
+      shots.forEach((shot, i) => shot.classList.toggle("current", i === index));
+    }
+
+    carousel.querySelector(".prev")?.addEventListener("click", () => show(index - 1));
+    carousel.querySelector(".next")?.addEventListener("click", () => show(index + 1));
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") show(index - 1);
+      if (event.key === "ArrowRight") show(index + 1);
+    });
+  }
+</script>
+
+<style>
+  .wrap {
+    min-height: 100vh;
+    padding: clamp(96px, 14vh, 140px) clamp(12px, 4vw, 48px) 64px;
+  }
+
+  .panel {
+    max-width: 980px;
+    margin: 0 auto;
+    background: var(--surface-raised);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    overflow: hidden;
+    animation: riseIn 0.3s ease both;
+  }
+
+  .media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+  }
+
+  .carousel,
+  .shot {
+    position: absolute;
+    inset: 0;
+  }
+
+  .shot {
+    display: none;
+  }
+
+  .shot.current {
+    display: block;
+  }
+
+  .shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .shot-ph {
+    height: 100%;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .ph-kicker {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-4);
+  }
+
+  .ph-label {
+    margin: 8px 0 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #4d5563;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(15, 18, 22, 0.8);
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+  }
+
+  .arrow:hover {
+    border-color: #ffffff;
+  }
+
+  .prev {
+    left: 14px;
+  }
+
+  .next {
+    right: 14px;
+  }
+
+  .close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(15, 18, 22, 0.85);
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .close:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .body {
+    padding: clamp(20px, 4vw, 40px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 32px;
+  }
+
+  h2 {
+    margin: 0 0 6px;
+    font-size: clamp(26px, 3.6vw, 38px);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+
+  .meta {
+    margin: 0 0 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+  }
+
+  .prose {
+    margin: 0 0 16px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .prose.last {
+    margin-bottom: 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .itch {
+    padding: 13px 24px;
+    border-radius: 999px;
+    background: var(--accent-2);
+    color: var(--accent-2-ink);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .itch:hover {
+    background: #ffffff;
+    color: var(--accent-2-ink);
+  }
+
+  .dl {
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .dl:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  aside {
+    border-left: 1px solid var(--border);
+    padding-left: 24px;
+  }
+
+  @media (max-width: 640px) {
+    aside {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  h3 {
+    margin: 0 0 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  h3.built {
+    margin: 26px 0 10px;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .control {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--ink-2);
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 7px;
+  }
+
+  .key {
+    font-family: var(--font-mono);
+    color: var(--ink);
+  }
+
+  .stack {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+</style>

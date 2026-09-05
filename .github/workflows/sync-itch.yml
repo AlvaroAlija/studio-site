@@ -1,0 +1,31 @@
+name: Sync itch.io
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # nightly
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync games.json from itch.io
+        env:
+          ITCH_API_KEY: ${{ secrets.ITCH_API_KEY }}
+        run: python3 pipeline/sync_itch.py
+
+      - name: Commit manifest if changed
+        run: |
+          if ! git diff --quiet content/games.json; then
+            git config user.name "itch-sync-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add content/games.json
+            git commit -m "chore: sync games.json from itch.io"
+            git push
+          else
+            echo "no changes"
+          fi

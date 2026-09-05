@@ -1,0 +1,90 @@
+---
+const path = Astro.url.pathname;
+
+const links = [
+  { label: "Home", href: "/", active: path === "/" },
+  { label: "3D Renders", href: "/#renders", active: false },
+  { label: "Games", href: "/#games", active: path.startsWith("/games") },
+  { label: "Blog", href: "/#blog", active: path.startsWith("/blog") },
+  { label: "About", href: "/#about", active: false },
+  { label: "Contact", href: "/#contact", active: false },
+];
+---
+
+<header>
+  <a class="wordmark" href="/">
+    <span class="name">Álvaro</span>
+    <span class="tag">3D&nbsp;/&nbsp;GAMES</span>
+  </a>
+  <nav>
+    {links.map((l) => (
+      <a href={l.href} class:list={{ active: l.active }} aria-current={l.active ? "page" : undefined}>
+        {l.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px var(--gutter);
+    background: rgba(20, 23, 28, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    color: var(--ink);
+  }
+
+  .name {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 26px);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    color: #b6bcc7;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover {
+    color: #ffffff;
+  }
+
+  nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+</style>

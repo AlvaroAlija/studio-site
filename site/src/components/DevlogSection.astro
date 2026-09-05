@@ -1,0 +1,89 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate, readingTime } from "../lib/content";
+
+const posts = (await getCollection("devlog")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<section id="blog">
+  <p class="eyebrow">04 — Writing</p>
+  <h2 class="section-h2">Devlog</h2>
+  <div class="posts">
+    {posts.map((post) => (
+      <a class="row" href={`/blog/${post.id}`}>
+        <div class="meta">
+          <span>{formatDate(post.data.date)}</span>
+          <span class="tag">{post.data.tag}</span>
+          <span>{readingTime(post.body ?? "")}</span>
+        </div>
+        <h3>{post.data.title}</h3>
+        <p>{post.data.excerpt}</p>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 72px var(--gutter);
+    max-width: 1000px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .section-h2 {
+    margin-bottom: 30px;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    text-align: left;
+    color: inherit;
+    border-top: 1px solid var(--border);
+    padding: 24px 4px;
+  }
+
+  .row:hover {
+    background: rgba(255, 255, 255, 0.025);
+    color: inherit;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-4);
+  }
+
+  .tag {
+    color: var(--accent);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: clamp(19px, 2.4vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-3);
+    max-width: 68ch;
+  }
+</style>

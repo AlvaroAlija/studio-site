@@ -1,0 +1,70 @@
+name: Render on workstation
+
+on:
+  workflow_dispatch:
+    inputs:
+      scene:
+        description: "Path to the .blend scene on the workstation runner"
+        required: true
+      slug:
+        description: "Render slug (kebab-case, storage path segment)"
+        required: true
+      title:
+        description: "Card title"
+        required: true
+      category:
+        description: "Environments | Hard surface | Product | Character"
+        required: true
+        type: choice
+        options: [Environments, Hard surface, Product, Character]
+      price:
+        description: "Price in USD (0 = free)"
+        required: true
+        default: "0"
+      spec:
+        description: "Monospace spec line, e.g. 6144×6144 · PNG + .blend"
+        required: true
+      desc:
+        description: "1–2 sentence card description"
+        required: true
+      buy:
+        description: "Gumroad/Stripe link (paid items)"
+        required: false
+
+jobs:
+  render-upload:
+    runs-on: [self-hosted, workstation]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Render
+        run: |
+          python3 pipeline/render.py \
+            --scene "${{ inputs.scene }}" \
+            --out "out/${{ inputs.slug }}.png"
+
+      - name: Upload artifacts & write manifest
+        env:
+          R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          python3 pipeline/upload.py \
+            --slug "${{ inputs.slug }}" \
+            --title "${{ inputs.title }}" \
+            --category "${{ inputs.category }}" \
+            --price "${{ inputs.price }}" \
+            --spec "${{ inputs.spec }}" \
+            --desc "${{ inputs.desc }}" \
+            ${{ inputs.buy && format('--buy "{0}"', inputs.buy) || '' }} \
+            --image "out/${{ inputs.slug }}.png" \
+            --extra "${{ inputs.scene }}"
+
+      - name: Commit manifest (triggers build-deploy)
+        run: |
+          git config user.name "render-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/renders.json
+          git commit -m "content: add render ${{ inputs.slug }}"
+          git push

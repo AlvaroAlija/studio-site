@@ -1,0 +1,25 @@
+# Node / Astro
+node_modules/
+dist/
+.astro/
+*.log
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+
+# Godot / Blender artifacts (never commit — object storage is the data plane)
+.godot/
+builds/
+renders/
+*.blend1
+*.blend2

@@ -1,0 +1,17 @@
+{
+  "name": "alvaro-works",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/space-grotesk": "^5.2.5",
+    "astro": "^5.13.0"
+  }
+}

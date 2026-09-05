@@ -1,0 +1,226 @@
+---
+const socials = [
+  { label: "itch.io", href: "https://itch.io" },
+  { label: "ArtStation", href: "https://artstation.com" },
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "YouTube", href: "https://youtube.com" },
+  { label: "Email", href: "mailto:hola@alvaro.works" },
+];
+
+// Set PUBLIC_FORM_ENDPOINT (e.g. a Formspree URL or a Pages Function route)
+// to activate real submissions; without it the form falls back to mailto.
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
+---
+
+<footer id="contact">
+  <div class="cols">
+    <div>
+      <p class="eyebrow">06 — Contact</p>
+      <h2>Start a project</h2>
+      <p class="blurb">
+        Commissions, licensing, or just to say a render looked good. I reply
+        within two days.
+      </p>
+      <div class="socials">
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noreferrer">{s.label}</a>
+        ))}
+      </div>
+    </div>
+    <form method="post" action={endpoint || undefined} data-endpoint={endpoint} novalidate>
+      <input name="name" placeholder="Name" required autocomplete="name" aria-label="Name" />
+      <input name="email" placeholder="Email" type="email" required autocomplete="email" aria-label="Email" />
+      <textarea name="message" placeholder="What do you need made?" rows="4" required aria-label="Message"></textarea>
+      <!-- honeypot: bots fill it, humans never see it -->
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <p class="form-error" role="alert" hidden></p>
+      <button type="submit">Send message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+  <div class="bar">
+    <span>© 2026 Álvaro — Blender &amp; Godot</span>
+    <span>Made solo, rendered slowly</span>
+  </div>
+</footer>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact form")!;
+  const button = form.querySelector<HTMLButtonElement>("button[type=submit]")!;
+  const errorEl = form.querySelector<HTMLElement>(".form-error")!;
+  const statusEl = form.querySelector<HTMLElement>(".form-status")!;
+  const endpoint = form.dataset.endpoint ?? "";
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    errorEl.hidden = true;
+
+    if ((form.elements.namedItem("website") as HTMLInputElement).value) return; // honeypot
+    if (!form.checkValidity()) {
+      errorEl.textContent = "Please fill in your name, a valid email, and a message.";
+      errorEl.hidden = false;
+      return;
+    }
+
+    if (!endpoint) {
+      // No form backend configured: hand off to the mail client instead.
+      const data = new FormData(form);
+      const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} <${data.get("email")}>`);
+      location.href = `mailto:hola@alvaro.works?subject=${encodeURIComponent("Project enquiry")}&body=${body}`;
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Sending…";
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      form.reset();
+      button.textContent = "Sent — thank you";
+      statusEl.textContent = "Message sent. I reply within two days.";
+    } catch {
+      button.disabled = false;
+      button.textContent = "Send message";
+      errorEl.textContent = "Sending failed — please try again or use the email link.";
+      errorEl.hidden = false;
+    }
+  });
+</script>
+
+<style>
+  footer {
+    padding: 72px var(--gutter) 48px;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-footer);
+  }
+
+  .cols {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(28px, 5vw, 72px);
+  }
+
+  h2 {
+    margin: 0 0 18px;
+    font-size: clamp(26px, 3.4vw, 40px);
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+
+  .blurb {
+    margin: 0 0 24px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-3);
+    max-width: 44ch;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .socials a {
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b6bcc7;
+  }
+
+  .socials a:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  input,
+  textarea {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  button {
+    align-self: start;
+    padding: 13px 26px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: none;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background: #ffffff;
+  }
+
+  button:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+
+  .form-error {
+    margin: 0;
+    font-size: 13px;
+    color: var(--accent-2);
+  }
+
+  .form-status {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .bar {
+    max-width: 1440px;
+    margin: 56px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-5);
+  }
+</style>

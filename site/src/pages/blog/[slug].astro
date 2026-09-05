@@ -1,0 +1,129 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { formatDate, readingTime } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("devlog");
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const meta = `${formatDate(post.data.date)}  ·  ${post.data.tag}  ·  ${readingTime(post.body ?? "")}`;
+---
+
+<Layout title={`${post.data.title} — Devlog`} description={post.data.excerpt}>
+  <article>
+    <a class="back" href="/#blog">← BACK TO DEVLOG</a>
+    <p class="meta">{meta}</p>
+    <h1>{post.data.title}</h1>
+    <p class="lede">{post.data.excerpt}</p>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(88px, 14vh, 152px) clamp(18px, 5vw, 24px) 96px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 40px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    color: #b6bcc7;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .back:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .meta {
+    margin: 0 0 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-4);
+    white-space: pre;
+  }
+
+  h1 {
+    margin: 0 0 28px;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  .lede {
+    margin: 0 0 26px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-lede);
+    text-wrap: pretty;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .prose :global(a) {
+    color: var(--accent);
+  }
+
+  .prose :global(figure) {
+    margin: 36px 0;
+  }
+
+  .prose :global(figure .ph) {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .prose :global(figure img) {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .prose :global(figcaption) {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-5);
+  }
+
+  .prose :global(pre) {
+    margin: 0 0 28px;
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--bg-footer) !important;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-mono);
+  }
+</style>

@@ -1,0 +1,134 @@
+/* Design tokens — see handoff README §Design tokens */
+:root {
+  --bg: #14171c;
+  --bg-footer: #101317;
+  --surface: #191d24;
+  --surface-raised: #16191f;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --ink: #e6e8ec;
+  --ink-lede: #c3c9d3;
+  --ink-2: #a4abb8;
+  --ink-3: #8b93a1;
+  --ink-4: #6d7684;
+  --ink-5: #5f6875;
+  --accent: #6ff0cf; /* themeable — alternates: #f59175 #a08bf0 #e8d16b */
+  --accent-ink: #0f1216;
+  --accent-2: #f59175; /* fixed: identifies the games surface */
+  --accent-2-ink: #1a1108;
+  --scrim: rgba(8, 10, 13, 0.78);
+  --font-sans: "Space Grotesk", Helvetica, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --gutter: clamp(16px, 4vw, 56px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Striped placeholder for image regions the pipeline has not filled yet */
+.ph {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(135deg, #1f242c 0 10px, #1a1f26 10px 20px);
+}
+
+.ph.warm {
+  background: repeating-linear-gradient(135deg, #232128 0 10px, #1c1a20 10px 20px);
+}
+
+.ph > span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+/* Shared section furniture */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin: 0 0 12px;
+}
+
+.section-h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

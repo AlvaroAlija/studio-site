@@ -1,0 +1,40 @@
+---
+/** Renders a real image when the manifest provides one, else the labelled
+ *  striped placeholder that marks what the pipeline will deliver there. */
+interface Props {
+  src: string | null | undefined;
+  alt: string;
+  label: string;
+  warm?: boolean;
+  class?: string;
+}
+
+const { src, alt, label, warm = false, class: className = "" } = Astro.props;
+---
+
+{src ? (
+  <div class={`media ${className}`}>
+    <img src={src} alt={alt} loading="lazy" decoding="async" />
+    <slot />
+  </div>
+) : (
+  <div class:list={["media", "ph", className, { warm }]}>
+    <span>{label}</span>
+    <slot />
+  </div>
+)}
+
+<style>
+  .media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

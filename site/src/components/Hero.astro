@@ -1,0 +1,201 @@
+---
+import Media from "./Media.astro";
+import { featured } from "../lib/content";
+---
+
+<section id="home" class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <p class="kicker">Independent · Blender · Godot</p>
+  <h1>Still frames and short worlds.</h1>
+  <p class="subline">
+    Developer building short, strange indie games in Godot. Everything here is
+    made solo — modelled, lit, coded and shipped.
+  </p>
+  <div class="ctas">
+    <a class="primary" href="/#renders">Browse renders</a>
+    <a class="secondary" href="/#games">Play the games</a>
+  </div>
+
+  <div class="featured-head">
+    <h2>Featured work</h2>
+    <span>2026 selection</span>
+  </div>
+  <div class="featured-grid">
+    {featured.map((f) => (
+      <article>
+        <a href={f.href}>
+          <Media src={f.image} alt={f.title} label={f.label} class="cover" warm={f.kind === "Game"} />
+          <div class="body">
+            <span class="kind">{f.kind}</span>
+            <h3>{f.title}</h3>
+            <p>{f.note}</p>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: clamp(120px, 16vh, 180px) var(--gutter) 64px;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .glow {
+    position: absolute;
+    top: 40px;
+    right: -160px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(111, 240, 207, 0.13), rgba(111, 240, 207, 0) 68%);
+    pointer-events: none;
+  }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 22px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(38px, 7vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    max-width: 15ch;
+    text-wrap: balance;
+  }
+
+  .subline {
+    margin: 26px 0 0;
+    max-width: 54ch;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .primary {
+    padding: 13px 24px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .primary:hover {
+    background: #ffffff;
+    color: var(--accent-ink);
+  }
+
+  .secondary {
+    padding: 13px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--ink);
+    font-size: 14px;
+  }
+
+  .secondary:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .featured-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 76px 0 18px;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+
+  .featured-head h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .featured-head span {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-5);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 16px;
+  }
+
+  .featured-grid article {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+    animation: riseIn 0.5s ease both;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .featured-grid article:hover {
+    border-color: rgba(111, 240, 207, 0.45);
+    transform: translateY(-4px);
+  }
+
+  .featured-grid a {
+    color: inherit;
+    display: block;
+  }
+
+  .featured-grid :global(.cover) {
+    aspect-ratio: 4 / 3;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .body {
+    padding: 16px 16px 18px;
+  }
+
+  .kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h3 {
+    margin: 8px 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .body p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+</style>

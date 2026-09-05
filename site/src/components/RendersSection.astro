@@ -1,0 +1,271 @@
+---
+import Media from "./Media.astro";
+import { renders, renderCategories } from "../lib/content";
+---
+
+<section id="renders">
+  <div class="head">
+    <div>
+      <p class="eyebrow">02 — Store</p>
+      <h2 class="section-h2">3D Renders</h2>
+    </div>
+    <p class="blurb">
+      High-resolution stills and asset packs. Instant download, personal &amp;
+      commercial licence included.
+    </p>
+  </div>
+
+  <div class="chips" role="group" aria-label="Filter renders by category">
+    {["All", ...renderCategories].map((cat) => (
+      <button
+        class:list={["chip", { active: cat === "All" }]}
+        data-category={cat}
+        aria-pressed={cat === "All" ? "true" : "false"}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid">
+    {renders.map((r) => (
+      <article class="card" data-category={r.category}>
+        <Media src={r.image} alt={r.title} label={`render — ${r.title.toLowerCase()}`} class="square">
+          <span class="badge cat">{r.category}</span>
+          <span class:list={["badge", "price", { free: r.price === 0 }]}>
+            {r.price === 0 ? "FREE" : `$${r.price}`}
+          </span>
+        </Media>
+        <div class="body">
+          <h3>{r.title}</h3>
+          <p>{r.desc}</p>
+          <div class="foot">
+            <span class="spec">{r.spec}</span>
+            {r.price === 0 ? (
+              <a class="cta ghost" href={r.full ?? "/#contact"} download={r.full ? "" : undefined}>Download</a>
+            ) : (
+              <a class="cta solid" href={r.buy ?? "/#contact"}>Purchase</a>
+            )}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <p class="empty" hidden>Nothing in this category yet — new packs land here first.</p>
+</section>
+
+<script>
+  // Client-side category filter; active filter is reflected in the URL
+  // (?category=...) so filtered views are linkable.
+  const section = document.getElementById("renders")!;
+  const chips = [...section.querySelectorAll<HTMLButtonElement>(".chip")];
+  const cards = [...section.querySelectorAll<HTMLElement>(".card")];
+  const empty = section.querySelector<HTMLElement>(".empty")!;
+
+  function apply(category: string, updateUrl: boolean): void {
+    let visible = 0;
+    for (const card of cards) {
+      const show = category === "All" || card.dataset.category === category;
+      card.hidden = !show;
+      if (show) visible++;
+    }
+    empty.hidden = visible > 0;
+    for (const chip of chips) {
+      const active = chip.dataset.category === category;
+      chip.classList.toggle("active", active);
+      chip.setAttribute("aria-pressed", String(active));
+    }
+    if (updateUrl) {
+      const url = new URL(location.href);
+      if (category === "All") url.searchParams.delete("category");
+      else url.searchParams.set("category", category);
+      history.replaceState(null, "", url);
+    }
+  }
+
+  for (const chip of chips) {
+    chip.addEventListener("click", () => apply(chip.dataset.category!, true));
+  }
+
+  const initial = new URLSearchParams(location.search).get("category");
+  if (initial && chips.some((c) => c.dataset.category === initial)) {
+    apply(initial, false);
+  }
+</script>
+
+<style>
+  section {
+    padding: 72px var(--gutter);
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .blurb {
+    margin: 0;
+    max-width: 42ch;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-3);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 30px 0 26px;
+  }
+
+  .chip {
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    color: #b6bcc7;
+    border: 1px solid var(--border-strong);
+  }
+
+  .chip.active {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-color: var(--accent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(111, 240, 207, 0.45);
+  }
+
+  .card :global(.square) {
+    aspect-ratio: 1 / 1;
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: 12px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .badge.cat {
+    left: 12px;
+    background: rgba(15, 18, 22, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    color: #b6bcc7;
+  }
+
+  .badge.price {
+    right: 12px;
+    background: rgba(15, 18, 22, 0.78);
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .badge.price.free {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .body p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-3);
+    flex: 1;
+    text-wrap: pretty;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .spec {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-5);
+  }
+
+  .cta {
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .cta.solid {
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 1px solid var(--accent);
+  }
+
+  .cta.ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .cta:hover {
+    background: #ffffff;
+    color: var(--accent-ink);
+    border-color: #ffffff;
+  }
+
+  .empty {
+    margin: 26px 0 0;
+    font-size: 14px;
+    color: var(--ink-3);
+  }
+</style>
