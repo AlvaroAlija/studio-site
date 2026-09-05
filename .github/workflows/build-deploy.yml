@@ -32,6 +32,8 @@ jobs:
 
       - name: Install & build
         working-directory: site
+        env:
+          PUBLIC_FORM_ENDPOINT: ${{ vars.PUBLIC_FORM_ENDPOINT }}
         run: |
           npm ci
           npm run build
