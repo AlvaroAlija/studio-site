@@ -1,4 +1,4 @@
-# alvaro.works — portfolio + GitOps content pipeline
+# alvaroalija.com — portfolio + GitOps content pipeline
 
 Portfolio site for Álvaro (3D artist in Blender, indie game dev in Godot) with a
 GitOps content pipeline: the site is **never hand-edited to add content**. The

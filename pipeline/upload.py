@@ -30,7 +30,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = REPO_ROOT / "content" / "renders.json"
-CDN_BASE = os.environ.get("CDN_BASE_URL", "https://cdn.alvaro.works")
+CDN_BASE = os.environ.get("CDN_BASE_URL", "https://cdn.alvaroalija.com")
 CARD_SIZE = 1200  # square WebP card generated for the store grid
 
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")

@@ -4,7 +4,7 @@ const socials = [
   { label: "ArtStation", href: "https://artstation.com" },
   { label: "Instagram", href: "https://instagram.com" },
   { label: "YouTube", href: "https://youtube.com" },
-  { label: "Email", href: "mailto:hola@alvaro.works" },
+  { label: "Email", href: "mailto:hola@alvaroalija.com" },
 ];
 
 // Set PUBLIC_FORM_ENDPOINT (e.g. a Formspree URL or a Pages Function route)
@@ -66,7 +66,7 @@ const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
       // No form backend configured: hand off to the mail client instead.
       const data = new FormData(form);
       const body = encodeURIComponent(`${data.get("message")}\n\n— ${data.get("name")} <${data.get("email")}>`);
-      location.href = `mailto:hola@alvaro.works?subject=${encodeURIComponent("Project enquiry")}&body=${body}`;
+      location.href = `mailto:hola@alvaroalija.com?subject=${encodeURIComponent("Project enquiry")}&body=${body}`;
       return;
     }
 

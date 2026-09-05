@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://alvaro.works",
+  site: "https://alvaroalija.com",
   output: "static",
   markdown: {
     shikiConfig: {
