@@ -1,11 +1,11 @@
 [
   {
-    "slug": "hollow-signal",
-    "title": "Hollow Signal",
+    "slug": "balling-over-it",
+    "title": "balling Over It",
     "status": "Released",
-    "meta": "Godot 4 · 25 min · Windows / Web",
-    "tagline": "A radio operator alone on a coastal relay. Answer the calls, or don't.",
-    "story": "You are the last night operator at Relay Nine. Voices arrive on frequencies that were decommissioned twenty years ago, and each one asks you to log something that never happened.",
+    "meta": "Godot 4 · 25 min · Web",
+    "tagline": "A physics based game where your goal is to throw the ball to slowly climb through different eviroments ",
+    "story": "",
     "detail": "Built in six weeks for a jam and finished afterwards. Hand-modelled interior in Blender, baked lighting, one dialogue tree with four endings.",
     "stack": "Godot 4.3, Blender, Reaper for foley.",
     "controls": [
@@ -16,9 +16,9 @@
     ],
     "cover": null,
     "shots": [
-      { "src": null, "label": "screenshot 01 — relay booth" },
-      { "src": null, "label": "screenshot 02 — the dial" },
-      { "src": null, "label": "trailer — 40s cut" }
+      { "src": "/games/balling-over-it/screen01.png", "label": "screenshot 01 — relay booth" },
+      { "src": "/games/balling-over-it/screen02.png", "label": "screenshot 02 — the dial" },
+      { "src": "/games/balling-over-it/screen03.png", "label": "trailer — 40s cut" }
     ],
     "itchUrl": "https://alijaa.itch.io",
     "embedUrl": null,
