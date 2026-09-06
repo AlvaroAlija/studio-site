@@ -23,3 +23,6 @@ builds/
 renders/
 *.blend1
 *.blend2
+
+# Wrangler local cache
+.wrangler/
