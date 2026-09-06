@@ -1,7 +1,7 @@
 [
   {
     "slug": "balling-over-it",
-    "title": "balling Over It",
+    "title": "Balling Over It",
     "status": "Released",
     "meta": "Godot 4 · 25 min · Web",
     "tagline": "A physics based game where your goal is to throw the ball to slowly climb through different eviroments ",
@@ -9,18 +9,39 @@
     "detail": "Built in six weeks for a jam and finished afterwards. Hand-modelled interior in Blender, baked lighting, one dialogue tree with four endings.",
     "stack": "Godot 4.3, Blender, Reaper for foley.",
     "controls": [
-      { "key": "WASD", "act": "Move" },
-      { "key": "E", "act": "Interact / tune" },
-      { "key": "TAB", "act": "Log book" },
-      { "key": "ESC", "act": "Pause" }
+      {
+        "key": "WASD",
+        "act": "Move"
+      },
+      {
+        "key": "E",
+        "act": "Interact / tune"
+      },
+      {
+        "key": "TAB",
+        "act": "Log book"
+      },
+      {
+        "key": "ESC",
+        "act": "Pause"
+      }
     ],
-    "cover": null,
+    "cover": "/games/balling-over-it/screen01.png",
     "shots": [
-      { "src": "/games/balling-over-it/screen01.png", "label": "screenshot 01 — relay booth" },
-      { "src": "/games/balling-over-it/screen02.png", "label": "screenshot 02 — the dial" },
-      { "src": "/games/balling-over-it/screen03.png", "label": "trailer — 40s cut" }
+      {
+        "src": "/games/balling-over-it/screen01.png",
+        "label": "screenshot 01 — relay booth"
+      },
+      {
+        "src": "/games/balling-over-it/screen02.png",
+        "label": "screenshot 02 — the dial"
+      },
+      {
+        "src": "/games/balling-over-it/screen03.png",
+        "label": "trailer — 40s cut"
+      }
     ],
-    "itchUrl": "https://alijaa.itch.io",
+    "itchUrl": "https://alijaa.itch.io/balling-over-it",
     "embedUrl": null,
     "downloadUrl": null,
     "featured": 2,
@@ -36,14 +57,29 @@
     "detail": "Made in a weekend, then rebalanced twice from player replays. Nine levels, no text, no tutorial.",
     "stack": "Godot 4.2, pixel art in Aseprite.",
     "controls": [
-      { "key": "SPACE", "act": "Magnetise" },
-      { "key": "R", "act": "Restart level" }
+      {
+        "key": "SPACE",
+        "act": "Magnetise"
+      },
+      {
+        "key": "R",
+        "act": "Restart level"
+      }
     ],
     "cover": null,
     "shots": [
-      { "src": null, "label": "screenshot 01 — foundry" },
-      { "src": null, "label": "screenshot 02 — the pull" },
-      { "src": null, "label": "trailer — 20s loop" }
+      {
+        "src": null,
+        "label": "screenshot 01 — foundry"
+      },
+      {
+        "src": null,
+        "label": "screenshot 02 — the pull"
+      },
+      {
+        "src": null,
+        "label": "trailer — 20s loop"
+      }
     ],
     "itchUrl": "https://alijaa.itch.io",
     "embedUrl": null,
@@ -61,15 +97,33 @@
     "detail": "Currently prototyping the growth simulation. Devlog posts go up every other Friday with build links.",
     "stack": "Godot 4.4, Blender for the modular greenhouse kit.",
     "controls": [
-      { "key": "LMB", "act": "Place / select" },
-      { "key": "Q / E", "act": "Rotate" },
-      { "key": "SPACE", "act": "Advance day" }
+      {
+        "key": "LMB",
+        "act": "Place / select"
+      },
+      {
+        "key": "Q / E",
+        "act": "Rotate"
+      },
+      {
+        "key": "SPACE",
+        "act": "Advance day"
+      }
     ],
     "cover": null,
     "shots": [
-      { "src": null, "label": "wip 01 — greenhouse" },
-      { "src": null, "label": "wip 02 — ledger ui" },
-      { "src": null, "label": "wip 03 — growth pass" }
+      {
+        "src": null,
+        "label": "wip 01 — greenhouse"
+      },
+      {
+        "src": null,
+        "label": "wip 02 — ledger ui"
+      },
+      {
+        "src": null,
+        "label": "wip 03 — growth pass"
+      }
     ],
     "itchUrl": "https://alijaa.itch.io",
     "embedUrl": null,
@@ -87,14 +141,29 @@
     "detail": "A mood piece testing baked-lighting workflows from Blender into Godot. Playable, unfinished on purpose.",
     "stack": "Godot 4.3, Blender baked lightmaps.",
     "controls": [
-      { "key": "W / S", "act": "Throttle" },
-      { "key": "A / D", "act": "Steer" },
-      { "key": "L", "act": "Headlights" }
+      {
+        "key": "W / S",
+        "act": "Throttle"
+      },
+      {
+        "key": "A / D",
+        "act": "Steer"
+      },
+      {
+        "key": "L",
+        "act": "Headlights"
+      }
     ],
     "cover": null,
     "shots": [
-      { "src": null, "label": "screenshot 01 — tunnel mouth" },
-      { "src": null, "label": "screenshot 02 — the halt" }
+      {
+        "src": null,
+        "label": "screenshot 01 — tunnel mouth"
+      },
+      {
+        "src": null,
+        "label": "screenshot 02 — the halt"
+      }
     ],
     "itchUrl": "https://alijaa.itch.io",
     "embedUrl": null,
