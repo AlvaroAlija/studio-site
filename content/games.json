@@ -14,14 +14,14 @@
       { "key": "TAB", "act": "Log book" },
       { "key": "ESC", "act": "Pause" }
     ],
-    "cover": null,
+    "cover": "/games/balling-over-it/cover.png",
     "shots": [
       { "src": "/games/balling-over-it/screen01.png", "label": "screenshot 01 — relay booth" },
       { "src": "/games/balling-over-it/screen02.png", "label": "screenshot 02 — the dial" },
       { "src": "/games/balling-over-it/screen03.png", "label": "trailer — 40s cut" }
     ],
-    "itchUrl": "https://alijaa.itch.io",
-    "embedUrl": null,
+    "itchUrl": "https://alijaa.itch.io/balling-over-it",
+    "embedUrl": "https://itch.io/embed-upload/17618219?color=234172",
     "downloadUrl": null,
     "featured": 2,
     "featuredNote": "Out now on itch.io. Four endings, one radio."
