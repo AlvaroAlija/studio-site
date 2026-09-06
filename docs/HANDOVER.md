@@ -26,7 +26,7 @@ Para verificar: pestaña **Actions** del repo (el workflow "Build & deploy" debe
 
 Crea un archivo en `content/devlog/` con nombre `AAAA-MM-DD-slug.md` (el slug será la URL: `/blog/AAAA-MM-DD-slug`). Plantilla completa:
 
-```markdown
+````markdown
 ---
 title: "Título del post"
 date: 2026-09-12
@@ -48,7 +48,7 @@ func example() -> void:
 ```
 
 Párrafo de cierre.
-```
+````
 
 - `tag` debe ser uno de: `GODOT` | `BLENDER` | `DEVLOG` | `STORE`.
 - El tiempo de lectura se calcula solo — no lo escribas.
