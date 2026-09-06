@@ -81,7 +81,7 @@ Cada render es un objeto del array. Campos:
 
 | Campo | Qué es |
 |---|---|
-| `slug` | id único; **debe coincidir con el slug de la URL de itch.io** (`alvaro.itch.io/<slug>`) para el sync automático |
+| `slug` | id único; **debe coincidir con el slug de la URL de itch.io** (`alijaa.itch.io/<slug>`) para el sync automático |
 | `title`, `status` | status: `Released` \| `In development` \| `Prototype` |
 | `meta` | línea `Motor · duración · plataformas` |
 | `tagline` | frase de la card del catálogo |

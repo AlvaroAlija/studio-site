@@ -7,7 +7,7 @@ overwritten (cover, itchUrl, embedUrl, downloadUrl, status published-ness);
 editorial fields (story, detail, controls, ...) stay as authored in git.
 
 Requires the ITCH_API_KEY environment variable (itch.io → Settings → API keys).
-Games are matched by slug against the itch.io game url (e.g. alvaro.itch.io/hollow-signal).
+Games are matched by slug against the itch.io game url (e.g. alijaa.itch.io/<slug>).
 
     python3 pipeline/sync_itch.py            # writes content/games.json if changed
     python3 pipeline/sync_itch.py --dry-run  # prints the diff summary only
