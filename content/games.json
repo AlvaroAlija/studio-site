@@ -27,7 +27,6 @@
       }
     ],
     "cover": "/games/balling-over-it/cover.png",
-    "cover": "/games/balling-over-it/screen01.png",
     "shots": [
       {
         "src": "/games/balling-over-it/screen01.png",
@@ -44,8 +43,6 @@
     ],
     "itchUrl": "https://alijaa.itch.io/balling-over-it",
     "embedUrl": "https://itch.io/embed-upload/17618219?color=234172",
-    "itchUrl": "https://alijaa.itch.io/balling-over-it",
-    "embedUrl": null,
     "downloadUrl": null,
     "featured": 2,
     "featuredNote": "Out now on itch.io. Four endings, one radio."
