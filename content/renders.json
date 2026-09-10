@@ -1,17 +1,17 @@
 [
   {
-    "slug": "kelp-cathedral",
-    "title": "Kelp Cathedral",
-    "category": "Environments",
-    "price": 24,
-    "desc": "Submerged gothic hall lit by a single caustic shaft. 6K still plus the raw .blend scene.",
-    "spec": "6144×6144 · PNG + .blend",
-    "image": null,
+    "slug": "Isometric_room_1",
+    "title": "Isometric Room 1",
+    "category": "Isometric Rooms",
+    "price": 0,
+    "desc": "My first isometric room, first time using cloth physics to make the pillows and the bed sheet, also my first time using an orthograpic camera.",
+    "spec": "PNG",
+    "image": "/alvaroalijamenendez/3D_blender_renders/isometric_rooms/isometricroom1(Cycles).png",
     "full": null,
     "buy": null,
-    "updated": "2026-08-30",
+    "updated": "2026-08-10",
     "featured": 1,
-    "featuredNote": "Latest environment study — six weeks of caustics."
+    "featuredNote": null
   },
   {
     "slug": "rustbelt-loader",
