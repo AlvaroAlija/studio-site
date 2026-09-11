@@ -111,4 +111,74 @@
     "featured": null,
     "featuredNote": null
   }
+  {
+    "slug": "city_night",
+    "title": "City at Night",
+    "category": "Scenes",
+    "price": 0,
+    "desc": "One of my first times using fog and the composting glare for the neon effect.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/scenes/city_night_v2.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09.11",
+    "featured": null,
+    "featuredNote": null
+  }
+  {
+    "slug": "bottle_sand",
+    "title": "Bottle on Dunes",
+    "category": "Scenes",
+    "price": 0,
+    "desc": "Learnt glass materials, and paper materials using the thin wall option in blender.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/scenes/bottle_sand.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09-11",
+    "featured": null,
+    "featuredNote": null
+  }
+  {
+    "slug": "mars_scene",
+    "title": "Mars Scene",
+    "category": "Scenes",
+    "price": 0,
+    "desc": "My firts big outside scene, tried recreating mars, I rigged the character so I could get him to have whatever pose I wanted to.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/mars_scene/mars_scene_cycles_v4.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09-11",
+    "featured": null,
+    "featuredNote": null
+  }
+  {
+    "slug": "coffee_table",
+    "title": "Coffee Scene",
+    "category": "Scenes",
+    "price": 0,
+    "desc": "My secong render ever, followed a tutorial for almost everything, fist time using particle systems for the sugar cubes on the donuts.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/food/coffe_scene.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09-11",
+    "featured": null,
+    "featuredNote": null
+  }
+  {
+    "slug": "car_1",
+    "title": "car 1",
+    "category": "Objects",
+    "price": 0,
+    "desc": "First time modeling a car!.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/cars/car1(color_v2)_cycles.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09-11",
+    "featured": null,
+    "featuredNote": null
+  }
 ]
