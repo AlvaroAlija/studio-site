@@ -10,20 +10,12 @@
     "stack": "Godot 4.3, Blender, Reaper for foley.",
     "controls": [
       {
-        "key": "WASD",
-        "act": "Move"
+        "key": "Drag mouse",
+        "act": "throw ball"
       },
       {
-        "key": "E",
-        "act": "Interact / tune"
-      },
-      {
-        "key": "TAB",
-        "act": "Log book"
-      },
-      {
-        "key": "ESC",
-        "act": "Pause"
+        "key": "R",
+        "act": "reset"
       }
     ],
     "cover": "/games/balling-over-it/cover.png",
@@ -38,51 +30,34 @@
       },
       {
         "src": "/games/balling-over-it/screen03.png",
-        "label": "trailer — 40s cut"
+        "label": "screenshot"
       }
     ],
     "itchUrl": "https://alijaa.itch.io/balling-over-it",
     "embedUrl": "https://itch.io/embed-upload/17618219?color=234172",
     "downloadUrl": null,
     "featured": 2,
-    "featuredNote": "Out now on itch.io. Four endings, one radio."
+    "featuredNote": "Out now on itch.io."
   },
   {
-    "slug": "ferrous",
-    "title": "Ferrous",
+    "slug": "duck_frequency",
+    "title": "Duck Frequency",
     "status": "Released",
-    "meta": "Godot 4 · 15 min · Web",
-    "tagline": "One-button magnet platformer. Everything metal wants you.",
-    "story": "A scrap drone falls into a decommissioned foundry and discovers it can only move by pulling the world toward itself.",
-    "detail": "Made in a weekend, then rebalanced twice from player replays. Nine levels, no text, no tutorial.",
-    "stack": "Godot 4.2, pixel art in Aseprite.",
+    "meta": "Godot 4",
+    "tagline": "Horror game for a game jam",
+    "story": "Try to find the 3 TV remotes without getting caught by the duck.",
+    "detail": "Made in a weekend for a gamejam, very positive reviews on itch.io.",
+    "stack": "Godot 4.2.",
     "controls": [
       {
-        "key": "SPACE",
-        "act": "Magnetise"
-      },
-      {
-        "key": "R",
-        "act": "Restart level"
+        "key": "WASD",
+        "act": "move"
       }
     ],
-    "cover": null,
-    "shots": [
-      {
-        "src": null,
-        "label": "screenshot 01 — foundry"
-      },
-      {
-        "src": null,
-        "label": "screenshot 02 — the pull"
-      },
-      {
-        "src": null,
-        "label": "trailer — 20s loop"
-      }
-    ],
-    "itchUrl": "https://alijaa.itch.io",
-    "embedUrl": null,
+    "cover": "/games/duck-frequency/cover.png",
+    "shots": null,
+    "itchUrl": "https://alijaa.itch.io/duck-frequency",
+    "embedUrl": "https://itch.io/embed-upload/15504264?color=000000",
     "downloadUrl": null,
     "featured": null,
     "featuredNote": null
