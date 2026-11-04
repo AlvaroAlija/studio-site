@@ -36,7 +36,7 @@
     "itchUrl": "https://alijaa.itch.io/balling-over-it",
     "embedUrl": "https://itch.io/embed-upload/17618219?color=234172",
     "downloadUrl": null,
-    "featured": 2,
+    "featured": null,
     "featuredNote": "Out now on itch.io."
   },
   {
@@ -63,85 +63,59 @@
     "featuredNote": null
   },
   {
-    "slug": "terrarium-debt",
-    "title": "Terrarium Debt",
-    "status": "In development",
-    "meta": "Godot 4 · WIP · Devlog live",
-    "tagline": "A tiny colony sim where the plants keep the ledger.",
-    "story": "Your greenhouse lends you oxygen at interest. Miss a payment and the terrarium reclaims a room.",
-    "detail": "Currently prototyping the growth simulation. Devlog posts go up every other Friday with build links.",
-    "stack": "Godot 4.4, Blender for the modular greenhouse kit.",
+    "slug": "loopstream",
+    "title": "Loopstream",
+    "status": "Released",
+    "meta": "Godot 4 · Game Jam",
+    "tagline": "A game jam speedrunning game",
+    "story": "You control a small racing boat, try to get to the finish line as fast as possible, ",
+    "detail": "Made for a 72h gamejam, had a lot of fun making it, got really good reviews and some people got a really good time",
+    "stack": "Godot 4.4",
     "controls": [
       {
-        "key": "LMB",
-        "act": "Place / select"
+        "key": "WASD",
+        "act": "Move"
       },
       {
-        "key": "Q / E",
-        "act": "Rotate"
+        "key": "R",
+        "act": "Restart"
       },
       {
         "key": "SPACE",
-        "act": "Advance day"
+        "act": "Boost"
       }
     ],
-    "cover": null,
-    "shots": [
-      {
-        "src": null,
-        "label": "wip 01 — greenhouse"
-      },
-      {
-        "src": null,
-        "label": "wip 02 — ledger ui"
-      },
-      {
-        "src": null,
-        "label": "wip 03 — growth pass"
-      }
-    ],
-    "itchUrl": "https://alijaa.itch.io",
-    "embedUrl": null,
+    "cover": "/games/duck-frequency/cover_loopstream.JPEG",
+    "shots": null,
+    "itchUrl": "https://alijaa.itch.io/loopstream",
+    "embedUrl": "https://itch.io/embed-upload/14160096?color=193955",
     "downloadUrl": null,
     "featured": null,
     "featuredNote": null
   },
   {
-    "slug": "nightcrawl",
-    "title": "Nightcrawl",
-    "status": "Prototype",
-    "meta": "Godot 4 · 10 min · Web",
-    "tagline": "Drive a service tunnel at 3am. Something else is also on shift.",
-    "story": "A maintenance loop through eleven kilometres of tunnel. The route never changes. The lights do.",
-    "detail": "A mood piece testing baked-lighting workflows from Blender into Godot. Playable, unfinished on purpose.",
-    "stack": "Godot 4.3, Blender baked lightmaps.",
+    "slug": "planetfall",
+    "title": "Planetfall",
+    "status": "Released",
+    "meta": "Godot 4 · Game Jam · Web" ,
+    "tagline": "Game I made for one of my first game jams ",
+    "story": "Our planet is full of pullution and even space is packed with garbage, the only way to save your planet is to clean all that residue",
+    "detail": "One of my first Game jams, still couple od bugs",
+    "stack": "Godot 4.3",
     "controls": [
       {
-        "key": "W / S",
-        "act": "Throttle"
+        "key": "WASD",
+        "act": "Move"
       },
       {
-        "key": "A / D",
-        "act": "Steer"
-      },
-      {
-        "key": "L",
-        "act": "Headlights"
+        "key": "E",
+        "act": "Interact"
       }
     ],
-    "cover": null,
-    "shots": [
-      {
-        "src": null,
-        "label": "screenshot 01 — tunnel mouth"
-      },
-      {
-        "src": null,
-        "label": "screenshot 02 — the halt"
-      }
-    ],
-    "itchUrl": "https://alijaa.itch.io",
-    "embedUrl": null,
+    "cover": "/games/Planetfall/cover.png",
+    "shots": null,
+    "itchUrl": "https://alijaa.itch.io/planetfall-gamejam",
+    "embedUrl": "https://itch.io/embed-upload/14303258?color=000000",
     "downloadUrl": null,
     "featured": null,
     "featuredNote": null
