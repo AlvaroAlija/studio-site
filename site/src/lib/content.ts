@@ -94,7 +94,7 @@ export const featured: FeaturedItem[] = [
 export const stats = [
   { value: `${renders.length}`, label: "Renders shipped" },
   { value: `${games.filter((g) => g.status === "Released").length}`, label: "Games released" },
-  { value: "6 yr", label: "In Blender" },
+  { value: "1 yr", label: "In Blender" },
   { value: "100%", label: "Solo built" },
 ];
 

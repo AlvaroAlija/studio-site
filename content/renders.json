@@ -180,5 +180,19 @@
     "updated": "2026-09-11",
     "featured": null,
     "featuredNote": null
+  },
+  {
+    "slug": "spooky_house",
+    "title": "car 1",
+    "category": "Objects",
+    "price": 0,
+    "desc": "First time modeling a car!.",
+    "spec": "PNG",
+    "image": "/3D_blender_renders/cars/car1(color_v2)_cycles.png",
+    "full": null,
+    "buy": null,
+    "updated": "2026-09-11",
+    "featured": null,
+    "featuredNote": null
   }
 ]
