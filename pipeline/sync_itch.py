@@ -3,8 +3,9 @@
 
 Runs on every build and nightly (sync-itch.yml), so cover changes and new
 releases propagate without a manual commit. Only fields that itch.io owns are
-overwritten (cover, itchUrl, embedUrl, downloadUrl, status published-ness);
-editorial fields (story, detail, controls, ...) stay as authored in git.
+overwritten (cover, itchUrl); editorial fields (story, detail, controls, ...)
+and embedUrl/downloadUrl stay as authored in git — the my-games API does not
+expose embed or download URLs.
 
 Requires the ITCH_API_KEY environment variable (itch.io → Settings → API keys).
 Games are matched by slug against the itch.io game url (e.g. alijaa.itch.io/<slug>).
@@ -69,8 +70,12 @@ def merge(entries: list[dict[str, Any]], itch_games: list[dict[str, Any]]) -> li
         url = game.get("url")
         if url and url != entry.get("itchUrl"):
             updates["itchUrl"] = url
-        if game.get("embed") and game["embed"].get("url") != entry.get("embedUrl"):
-            updates["embedUrl"] = game["embed"]["url"]
+        # itch's my-games API returns embed as {width, height, fullscreen} — no
+        # url — so embedUrl stays manually authored unless the API ever adds it.
+        embed = game.get("embed")
+        embed_url = embed.get("url") if isinstance(embed, dict) else None
+        if embed_url and embed_url != entry.get("embedUrl"):
+            updates["embedUrl"] = embed_url
 
         if updates:
             entry.update(updates)
