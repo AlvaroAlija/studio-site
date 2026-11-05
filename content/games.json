@@ -18,7 +18,7 @@
         "act": "reset"
       }
     ],
-    "cover": "/games/balling-over-it/cover.png",
+    "cover": "https://img.itch.zone/aW1nLzI3MzI5MTMwLnBuZw==/315x250%23c/rKT5nr.png",
     "shots": [
       {
         "src": "/games/balling-over-it/screen01.png",
@@ -54,7 +54,7 @@
         "act": "move"
       }
     ],
-    "cover": "/games/duck-frequency/cover.png",
+    "cover": "https://img.itch.zone/aW1nLzI0MDI4MDMyLnBuZw==/315x250%23c/IEEitM.png",
     "shots": null,
     "itchUrl": "https://alijaa.itch.io/duck-frequency",
     "embedUrl": "https://itch.io/embed-upload/15504264?color=000000",
@@ -85,7 +85,7 @@
         "act": "Boost"
       }
     ],
-    "cover": "/games/Loopstream/cover_loopstream.png",
+    "cover": "https://img.itch.zone/aW1nLzIxOTI2NzA3LnBuZw==/315x250%23c/3c0Uko.png",
     "shots": null,
     "itchUrl": "https://alijaa.itch.io/loopstream",
     "embedUrl": "https://itch.io/embed-upload/14160096?color=193955",
@@ -97,7 +97,7 @@
     "slug": "planetfall-gamejam",
     "title": "Planetfall",
     "status": "Released",
-    "meta": "Godot 4 · Game Jam · Web" ,
+    "meta": "Godot 4 · Game Jam · Web",
     "tagline": "Game I made for one of my first game jams",
     "story": "Our planet is full of pullution and even space is packed with garbage, the only way to save your planet is to clean all that residue",
     "detail": "One of my first Game jams, still couple od bugs",
@@ -112,7 +112,7 @@
         "act": "Interact"
       }
     ],
-    "cover": "/games/Planetfall/cover.png",
+    "cover": "https://img.itch.zone/aW1nLzIyMTYxNTc2LnBuZw==/315x250%23c/js9Qq9.png",
     "shots": null,
     "itchUrl": "https://alijaa.itch.io/planetfall-gamejam",
     "embedUrl": "https://itch.io/embed-upload/14303258?color=000000",
