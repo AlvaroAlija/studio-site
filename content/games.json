@@ -40,7 +40,7 @@
     "featuredNote": "Out now on itch.io."
   },
   {
-    "slug": "duck_frequency",
+    "slug": "duck-frequency",
     "title": "Duck Frequency",
     "status": "Released",
     "meta": "Godot 4",
@@ -94,7 +94,7 @@
     "featuredNote": null
   },
   {
-    "slug": "planetfall",
+    "slug": "planetfall-gamejam",
     "title": "Planetfall",
     "status": "Released",
     "meta": "Godot 4 · Game Jam · Web" ,
